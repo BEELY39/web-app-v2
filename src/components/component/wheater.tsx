@@ -123,11 +123,15 @@ export default function Component() {
     }
   }
 
-  const getWeatherIcon = (temp: number, precipitation: number) => {
+  const getWeatherIcon = (temp: number, precipitation: number, isNight: boolean) => {
     if (precipitation > 0.1) {
       return temp > 0 ? <CloudRainIcon className="h-6 w-6 text-blue-500" /> : <CloudSnowIcon className="h-6 w-6 text-blue-300" />
     } else {
-      return temp > 15 ? <SunIcon className="h-6 w-6 text-yellow-500" /> : <CloudIcon className="h-6 w-6 text-gray-500" />
+      if (isNight) {
+        return <MoonIcon className="h-6 w-6 text-blue-500" />
+      } else {
+        return temp > 15 ? <SunIcon className="h-6 w-6 text-yellow-500" /> : <CloudIcon className="h-6 w-6 text-gray-500" />
+      }
     }
   }
 
@@ -198,7 +202,7 @@ export default function Component() {
               </p>
               <div className="text-center mb-6">
                 <div className="flex justify-center items-center mb-2">
-                  {getWeatherIcon(weather.current_temperature, weather.hourly_precipitation[0])}
+                  {getWeatherIcon(weather.current_temperature, weather.hourly_precipitation[0], isNight)}
                   <span className="text-4xl ml-2">{weather.current_temperature.toFixed(1)}°C</span>
                 </div>
                 <p className="text-lg">Température actuelle</p>
@@ -220,7 +224,7 @@ export default function Component() {
                     {weather.hourly_temperatures.map((temp, index) => (
                       <div key={index} className="flex flex-col items-center">
                         <span className="text-sm">{formatHour(weather.hourly_times[index])}</span>
-                        {getWeatherIcon(temp, weather.hourly_precipitation[index])}
+                        {getWeatherIcon(temp, weather.hourly_precipitation[index], weather.hourly_times[index].getHours() < 6 || weather.hourly_times[index].getHours() >= 20)}
                         <span className="text-sm">{temp.toFixed(1)}°C</span>
                       </div>
                     ))}
@@ -234,7 +238,7 @@ export default function Component() {
                     <div key={index} className="flex-shrink-0 w-48 bg-white/50 rounded p-2">
                       <span className="font-medium block text-center">{formatDate(weather.daily_times[index])}</span>
                       <div className="flex items-center justify-center space-x-2 mt-2">
-                        {getWeatherIcon((temp + weather.daily_temperatures_min[index]) / 2, weather.daily_precipitation_sum[index])}
+                        {getWeatherIcon((temp + weather.daily_temperatures_min[index]) / 2, weather.daily_precipitation_sum[index], false)}
                         <span>{weather.daily_temperatures_min[index].toFixed(1)}°C - {temp.toFixed(1)}°C</span>
                       </div>
                       <div className="flex items-center justify-center space-x-2 mt-2">
