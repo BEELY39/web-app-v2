@@ -11,6 +11,7 @@ import {
   DialogClose,
 } from "@/components/ui/dialog"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { AlertDialog, AlertDialogAction, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -86,10 +87,22 @@ export function DialogDemo() {
       try {
         const response = await axios.post("/api/api", output);
         console.log("Réponse de l'API:", response.data);
-        <Alert>
-          <AlertTitle>Demande de devis envoyée avec succès !</AlertTitle>
-          <AlertDescription>Nous vous contacterons bientôt.</AlertDescription>
-        </Alert>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button variant="outline">Succès</Button>
+          </AlertDialogTrigger>
+          <AlertDialogContent>
+            <AlertDialogHeader>
+              <AlertDialogTitle>Demande envoyée</AlertDialogTitle>
+              <AlertDialogDescription>
+                Votre demande de devis a été envoyée avec succès !
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter>
+              <AlertDialogAction>OK</AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
         setOpen(false) // Ferme le dialogue
         // Réinitialiser le formulaire ici si nécessaire
         setStep(0)
