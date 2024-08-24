@@ -4,20 +4,21 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 export async function GET(request: Request) {
-  try {
-    const formData = await prisma.contact.findMany();
-    return NextResponse.json(formData);
-  } catch (error) {
-    return NextResponse.json({ error: "Erreur lors de la récupération des données" }, { status: 500 });
-  }
+ try {
+  const data = await prisma.devisRequest.findMany();
+  return NextResponse.json(data);
+ } catch (error) {
+  return NextResponse.json({ error: "Erreur lors de la récupération des données" }, { status: 500 });
+ }
 }
-
 export async function POST(request: Request) {
   try {
     const data = await request.json();
-    const newFormData = await prisma.contact.create({
+    const newFormData = await prisma.devisRequest.create({
       data: {
-        name: data.name,
+        age: data.age,
+        entrepriseSize: data.entrepriseSize,
+        budget: data.budget,
         email: data.email,
         message: data.message,
       },
@@ -27,14 +28,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Erreur lors de la création des données" }, { status: 500 });
   }
 }
-
 export async function PUT(request: Request) {
   try {
     const data = await request.json();
-    const updatedFormData = await prisma.contact.update({
+    const updatedFormData = await prisma.devisRequest.update({
       where: { id: data.id },
       data: {
-        name: data.name,
+        age: data.age,
+        entrepriseSize: data.entrepriseSize,
+        budget: data.budget,
         email: data.email,
         message: data.message,
       },
@@ -64,7 +66,7 @@ export async function DELETE(request: Request) {
 export async function PATCH(request: Request) {
   try {
     const data = await request.json();
-    const updatedFormData = await prisma.contact.update({
+    const updatedFormData = await prisma.devisRequest.update({
       where: { id: data.id },
       data: data,
     });

@@ -4,6 +4,8 @@ export default function CVPage() {
   return (
     <section className=" h-screen">
       <CV />
+      
     </section>
+    
   );
 }

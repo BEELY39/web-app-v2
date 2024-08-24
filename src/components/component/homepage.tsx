@@ -33,6 +33,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { DialogDemo } from "@/lib/dialoge";
 
 interface FormData {
   name: string;
@@ -113,6 +114,14 @@ export function Homepage() {
               Notre équipe de designers et développeurs crée des applications web visuellement époustouflantes et
               fonctionnellement hautement performantes, adaptées à vos besoins commerciaux.
             </p>
+            <div className="flex justify-center gap-4 items-center">
+              <DialogDemo  />
+              <Button variant="outline" className="mt-4 hover:bg-primary hover:text-primary-foreground">
+                <Link href="/page/cv">
+                Voir le CV
+              </Link>
+            </Button>
+            </div>
           </div>
         </motion.section>
         

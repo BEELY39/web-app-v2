@@ -25,6 +25,7 @@ To read more about using these font, please visit the Next.js documentation:
 **/
 import Link from "next/link"
 import Image from "next/image"
+import 'framer-motion'
 
 export function CV() {
   return (
@@ -36,6 +37,7 @@ export function CV() {
             <div className="flex items-center space-x-2 mb-2 sm:mb-0">
               <MailIcon className="w-4 h-4 sm:w-5 sm:h-5" />
               <span className="text-sm sm:text-base">daniel.mrn@gmail.com</span>
+              
             </div>
             <div className="flex items-center space-x-2 mb-2 sm:mb-0">
               <PhoneIcon className="w-4 h-4 sm:w-5 sm:h-5" />
