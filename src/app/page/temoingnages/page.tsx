@@ -67,6 +67,7 @@ const temoignages = [
 export default function Temoignages() {
   return (
     <>
+    
     <motion.div
       className="absolute top-4 left-4"
       initial={{ opacity: 0, x: -20 }}
