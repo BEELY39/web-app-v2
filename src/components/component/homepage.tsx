@@ -118,7 +118,7 @@ export function Homepage() {
               <DialogDemo  />
               <Button variant="outline" className="mt-4 hover:bg-primary hover:text-primary-foreground">
                 <Link href="/page/cv">
-                Voir le CV
+                Voir mon CV
               </Link>
             </Button>
             </div>
