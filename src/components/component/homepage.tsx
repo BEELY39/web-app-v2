@@ -183,7 +183,7 @@ export function Homepage() {
                     quality={100}
                   />
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300 rounded-lg flex items-center justify-center">
-                    <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">Voir le CV</span>
+                    <span className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">Voir mon CV</span>
                   </div>
                 </Link>
                 <Link href="/page/wheater" passHref className="group relative">
