@@ -34,7 +34,7 @@ import axios from "axios";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { DialogDemo } from "@/lib/dialoge";
-
+import { CodeIcon, PaletteIcon, SearchIcon, WrenchIcon, HomeIcon } from "lucide-react";
 interface FormData {
   name: string;
   email: string;
@@ -225,8 +225,138 @@ export function Homepage() {
                 </Link>
               </div>
             </motion.div>
+
+          </div>
+        <motion.section 
+          className="py-12 md:py-20 lg:py-24 px-4 md:px-8 bg-gray-100"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1.0 }}
+        >
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Nos Services</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <div className="flex items-center mb-4">
+                  <CodeIcon className="w-6 h-6 mr-2 text-primary" />
+                  <h3 className="text-xl font-semibold">Développement Web</h3>
+                </div>
+                <p className="text-gray-600">Nous créons des sites web modernes et réactifs, adaptés à vos besoins spécifiques.</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <div className="flex items-center mb-4">
+                  <PaletteIcon className="w-6 h-6 mr-2 text-primary" />
+                  <h3 className="text-xl font-semibold">Design UX/UI</h3>
+                </div>
+                <p className="text-gray-600">Nous concevons des interfaces utilisateur intuitives et esthétiques pour une expérience optimale.</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <div className="flex items-center mb-4">
+                  <SearchIcon className="w-6 h-6 mr-2 text-primary" />
+                  <h3 className="text-xl font-semibold">Optimisation SEO</h3>
+                </div>
+                <p className="text-gray-600">Nous améliorons la visibilité de votre site web dans les moteurs de recherche.</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <div className="flex items-center mb-4">
+                  <WrenchIcon className="w-6 h-6 mr-2 text-primary" />
+                  <h3 className="text-xl font-semibold">Maintenance et Support</h3>
+                </div>
+                <p className="text-gray-600">Nous assurons le bon fonctionnement de votre site web avec un support technique continu.</p>
+              </div>
+            </div>
+            <div className="mt-12 bg-primary text-white p-8 rounded-lg shadow-lg">
+              <div className="flex items-center mb-4">
+                <HomeIcon className="w-8 h-8 mr-3" />
+                <h3 className="text-2xl font-bold">Location de Site Web avec Option d&apos;Achat</h3>
+              </div>
+              <p className="text-lg mb-4">Découvrez notre offre unique : louez votre site web et bénéficiez d&apos;une option d&apos;achat !</p>
+              <ul className="list-disc list-inside mb-6">
+                <li>Flexibilité financière</li>
+                <li>Mise à jour et maintenance incluses</li>
+                <li>Possibilité d&apos;acquérir votre site à tout moment</li>
+              </ul>
+              <Button className="bg-white text-primary hover:bg-gray-200">
+                <Link href="/page/loasite">
+                  En savoir plus
+                </Link>
+              </Button>
+            </div>
+            
           </div>
         </motion.section>
+        <motion.section 
+          className="py-12 md:py-20 lg:py-24 px-4 md:px-8 bg-white"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1.05 }}
+        >
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Nos Templates par Secteur</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                { secteur: "E-commerce", Image: "/template-ecommerce.png" },
+                { secteur: "Restaurant", Image: "/template-restaurant.jpg" },
+                { secteur: "Immobilier", Image: "/template-immobilier.png" },
+              ].map((item, index) => (
+                <div key={index} className="relative group">
+                  <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg overflow-hidden">
+                    <Image
+                      src={item.Image}
+                      alt={`Template ${item.secteur}`}
+                      width={400}
+                      height={225}
+                      objectFit="cover"
+                      className="transition-opacity duration-300 group-hover:opacity-75"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="text-white text-xl font-bold bg-black bg-opacity-50 px-4 py-2 rounded">
+                        {item.secteur}
+                      </span>
+                    </div>
+                  </div>
+                  <p className="mt-2 text-center font-semibold">{item.secteur}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-12 text-center">
+              <Button className="bg-primary text-white hover:bg-primary-dark">
+                <Link href="/page/maintenace">
+                  Voir tous nos templates
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </motion.section>
+        </motion.section>
+        <motion.section 
+          className="py-12 md:py-20 lg:py-24 px-4 md:px-8 bg-gray-50"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 1.1 }}
+        >
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Témoignages Clients</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <p className="text-gray-600 mb-4">&quot; DNservices a transformé notre présence en ligne. Leur équipe est professionnelle et attentive à nos besoins.&quot;</p>
+                <p className="font-semibold">- Marie Dupont, PDG de TechInno</p>
+              </div>
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <p className="text-gray-600 mb-4">&quot;Le service de location de site web est une solution parfaite pour notre startup. Flexibilité et qualité au rendez-vous !&quot;</p>
+                <p className="font-semibold">- Pierre Martin, Fondateur de GreenStart</p>
+              </div>
+            </div>
+            <div className="mt-12 text-center">
+              <Button className="bg-primary text-white hover:bg-primary-dark">
+                <Link href="/page/temoingnages">
+                  Voir plus de témoignages
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </motion.section>
+        
         <motion.section 
           className="py-12 md:py-20 lg:py-24 px-4 md:px-8"
           initial={{ opacity: 0, y: 20 }}

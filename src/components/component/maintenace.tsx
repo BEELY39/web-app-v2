@@ -18,12 +18,15 @@ To read more about using these font, please visit the Next.js documentation:
 - Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
 **/
 import Link from "next/link"
+import { WrenchIcon } from "lucide-react"
 
 export function Maintenance() {
   return (
     <div className="flex min-h-[100dvh] flex-col items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-md text-center">
-        <div className="mx-auto h-12 w-12 text-primary" />
+        <div className="mx-auto h-12 w-12 text-primary">
+          <WrenchIcon className="h-12 w-12" />
+        </div>
         <h1 className="mt-4 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Site en maintenance</h1>
         <p className="mt-4 text-muted-foreground">
           Nous travaillons actuellement sur des améliorations et des réparations. Veuillez revenir plus tard.

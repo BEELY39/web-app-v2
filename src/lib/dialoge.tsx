@@ -47,7 +47,7 @@ export function DialogDemo() {
       label: "Quel est votre budget ?", 
       id: "budget", 
       type: "select",
-      options: ["moins de 1000€", "1000€ - 5000€", "5000€ - 10000€", "10000€ - 20000€", "20000€+"],
+      options: ["moins de 800€","800€", "1000€", "1500€", "2000€", "2500€", "3000€", "3500€", "4000€", "4500€+",],
       required: true
     },
     { 
