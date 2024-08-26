@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from 'next/script';
+import GoogleTagManager from "@/components/component/googletagManager";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <head>
+        <GoogleTagManager />
         {/* Google tag (gtag.js) */}
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-FDX6VW89PB" strategy="afterInteractive" />
         <Script id="google-analytics" strategy="afterInteractive">
