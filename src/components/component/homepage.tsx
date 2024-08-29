@@ -35,6 +35,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { DialogDemo } from "@/lib/dialoge";
 import { CodeIcon, PaletteIcon, SearchIcon, WrenchIcon, HomeIcon } from "lucide-react";
+import { link } from "fs";
 interface FormData {
   name: string;
   email: string;
@@ -295,20 +296,13 @@ export function Homepage() {
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">Nos Templates par Secteur</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {[
-                { secteur: "E-commerce", Image: "/template-ecommerce.png" },
-                { secteur: "Restaurant", Image: "/template-restaurant.jpg" },
-                { secteur: "Immobilier", Image: "/template-immobilier.png" },
+                { secteur: "E-commerce", image: "/template-ecommerce.png", link: "/templete/e-commerce/index.html" },
+                { secteur: "Immobilier", image: "/template-immobilier.png", link: "/templete/immobilier/index.html" },
+                { secteur: "Restauration", image: "/template-restaurant.jpg", link: "/templete/restauration/index.html" }
               ].map((item, index) => (
-                <div key={index} className="relative group">
-                  <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg overflow-hidden">
-                    <Image
-                      src={item.Image}
-                      alt={`Template ${item.secteur}`}
-                      width={400}
-                      height={225}
-                      objectFit="cover"
-                      className="transition-opacity duration-300 group-hover:opacity-75"
-                    />
+                <Link href={item.link} key={index} target="_blank" rel="noopener noreferrer">
+                  <div className="relative group cursor-pointer">
+                    <Image src={item.image} alt={item.secteur} width={400} height={300} className="rounded-lg shadow-md" />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="text-white text-xl font-bold bg-black bg-opacity-50 px-4 py-2 rounded">
                         {item.secteur}
@@ -316,7 +310,7 @@ export function Homepage() {
                     </div>
                   </div>
                   <p className="mt-2 text-center font-semibold">{item.secteur}</p>
-                </div>
+                </Link>
               ))}
             </div>
             <div className="mt-12 text-center">
