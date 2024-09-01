@@ -71,7 +71,7 @@ export function Homepage() {
   };
 
   return (
-    <div className="flex flex-col min-h-[100dvh]">
+    <div className="flex flex-col  min-h-[100dvh]">
       <header className="bg-primary text-primary-foreground py-6 px-4 md:px-8 flex items-center justify-between">
         <motion.div 
           className="flex items-center gap-4"
@@ -104,27 +104,52 @@ export function Homepage() {
       </header>
       <main className="flex-1">
         <motion.section 
-          className="py-12 md:py-20 lg:py-24 px-4 md:px-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+          className="py-12 md:py-24 lg:py-32 px-4 md:px-8 bg-gradient-to-br from-primary via-purple-600 to-secondary text-white overflow-hidden relative"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 3 }}
         >
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight">Développement d&apos;application web</h1>
-            <p className="text-muted-foreground text-lg md:text-xl">
-              Notre équipe de designers et développeurs crée des applications web visuellement époustouflantes et
-              fonctionnellement hautement performantes, adaptées à vos besoins commerciaux.
-            </p>
-            <div className="flex justify-center gap-4 items-center">
-              <DialogDemo  />
-              <Button variant="outline" className="mt-4 hover:bg-primary hover:text-primary-foreground">
-                <Link href="/page/cv">
-                Voir mon CV
-              </Link>
-            </Button>
-            </div>
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between relative z-10">
+            <motion.div 
+              className="w-full md:w-1/2 text-left space-y-4 md:space-y-6 mb-8 md:mb-0"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight">
+                Créez votre <span className="text-primary-foreground">avenir numérique</span> avec nous
+              </h1>
+              <p className="text-base md:text-lg lg:text-xl text-muted">
+                Des applications web innovantes et performantes, conçues sur mesure pour propulser votre entreprise vers le succès.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <DialogDemo />
+                <Button variant="outline" size="default" className="w-full sm:w-auto bg-primary-foreground text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300">
+                  <Link href="/page/cv">
+                    Découvrir notre expertise
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
+            <motion.div 
+              className="w-full md:w-1/2 mt-8 md:mt-0"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <Image 
+                src="/hero-section.svg" 
+                alt="Application web moderne" 
+                width={600} 
+                height={400} 
+                className="rounded-lg  w-full h-auto"
+              />
+            </motion.div>
           </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary opacity-20 animate-pulse"></div>
         </motion.section>
+
+        
         
         <motion.section 
           className="bg-muted py-12 md:py-20 lg:py-24"
@@ -301,10 +326,16 @@ export function Homepage() {
                 { secteur: "Restauration", image: "/template-restaurant.jpg", link: "/templete/restauration/index.html" }
               ].map((item, index) => (
                 <Link href={item.link} key={index} target="_blank" rel="noopener noreferrer">
-                  <div className="relative group cursor-pointer">
-                    <Image src={item.image} alt={item.secteur} width={400} height={300} className="rounded-lg shadow-md" />
+                  <div className="relative group cursor-pointer overflow-hidden">
+                    <Image 
+                      src={item.image} 
+                      alt={item.secteur} 
+                      width={400} 
+                      height={300} 
+                      className="rounded-lg shadow-md transition-transform duration-300 group-hover:scale-110" 
+                    />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <span className="text-white text-xl font-bold bg-black bg-opacity-50 px-4 py-2 rounded">
+                      <span className="text-white text-xl font-bold bg-black bg-opacity-50 px-4 py-2 rounded transform transition-transform duration-300 group-hover:scale-110">
                         {item.secteur}
                       </span>
                     </div>

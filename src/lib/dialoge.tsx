@@ -125,7 +125,9 @@ export function DialogDemo() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="mt-4 bg-primary text-white hover:bg-primary-foreground hover:text-black">demande de devis</Button>
+        <Button variant="outline" className="w-full sm:w-auto bg-primary text-white hover:bg-primary-foreground hover:text-black">
+          demande de devis
+        </Button>
       </DialogTrigger>
       <DialogContent className="w-[90vw] max-w-[500px] sm:w-full">
         <DialogHeader>
